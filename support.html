@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CarLarp Support</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper: #f7f6f2;
+    --surface: #ffffff;
+    --ink: #1a1c1e;
+    --ink-soft: #4a4f55;
+    --ink-faint: #6b7178;
+    --rule: rgba(20,22,24,.10);
+    --rule-soft: rgba(20,22,24,.06);
+    --accent: #0a9d88;
+    --accent-ink: #0a9d88;
+    --fill-bg: rgba(255, 196, 60, .22);
+    --fill-ink: #7a5300;
+    --fill-edge: rgba(180, 120, 0, .5);
+    --note-bg: rgba(10,157,136,.07);
+    --shadow: 0 1px 3px rgba(0,0,0,.05), 0 8px 30px rgba(0,0,0,.04);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0b0c0e;
+      --surface: #14161a;
+      --ink: #edeef0;
+      --ink-soft: rgba(237,238,240,.68);
+      --ink-faint: rgba(237,238,240,.45);
+      --rule: rgba(255,255,255,.09);
+      --rule-soft: rgba(255,255,255,.05);
+      --accent: #00d8b8;
+      --accent-ink: #2fe6cb;
+      --fill-bg: rgba(255, 196, 60, .14);
+      --fill-ink: #f0c66a;
+      --fill-edge: rgba(255, 196, 60, .4);
+      --note-bg: rgba(0,216,184,.08);
+      --shadow: none;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #0b0c0e;
+    --surface: #14161a;
+    --ink: #edeef0;
+    --ink-soft: rgba(237,238,240,.68);
+    --ink-faint: rgba(237,238,240,.45);
+    --rule: rgba(255,255,255,.09);
+    --rule-soft: rgba(255,255,255,.05);
+    --accent: #00d8b8;
+    --accent-ink: #2fe6cb;
+    --fill-bg: rgba(255, 196, 60, .14);
+    --fill-ink: #f0c66a;
+    --fill-edge: rgba(255, 196, 60, .4);
+    --note-bg: rgba(0,216,184,.08);
+    --shadow: none;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.65;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: clamp(28px, 5vw, 64px) clamp(20px, 5vw, 40px) 96px;
+  }
+
+  header.mast {
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 22px;
+    margin-bottom: 8px;
+  }
+  .eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-family: "Newsreader", Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(30px, 6vw, 44px);
+    line-height: 1.08;
+    letter-spacing: -.01em;
+    margin: 0 0 14px;
+    text-wrap: balance;
+  }
+  .meta {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    color: var(--ink-faint);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+  }
+
+  nav.toc {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 26px 0 34px;
+  }
+  nav.toc a {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    letter-spacing: .04em;
+    text-decoration: none;
+    color: var(--ink-soft);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 8px 14px;
+    transition: border-color .15s, color .15s;
+  }
+  nav.toc a:hover { color: var(--accent-ink); border-color: var(--accent); }
+
+  .note {
+    background: var(--note-bg);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin: 0 0 40px;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+  }
+  .note strong { color: var(--ink); }
+
+  section.doc { margin-bottom: 72px; scroll-margin-top: 24px; }
+  h2.doc-title {
+    font-family: "Newsreader", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(24px, 4.5vw, 32px);
+    letter-spacing: -.01em;
+    margin: 0 0 4px;
+    padding-top: 8px;
+  }
+  .doc-sub {
+    color: var(--ink-faint);
+    font-size: 14px;
+    margin: 0 0 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  h3 {
+    font-family: "Public Sans", sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: .01em;
+    margin: 34px 0 10px;
+    color: var(--ink);
+    display: flex;
+    gap: 12px;
+  }
+  h3 .num {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    color: var(--accent-ink);
+    padding-top: 2px;
+    min-width: 28px;
+  }
+  h3 + p, h3 + ul { margin-top: 0; }
+
+  p { margin: 0 0 14px; color: var(--ink-soft); font-size: 15.5px; }
+  .lead-in { color: var(--ink); }
+  ul { margin: 0 0 14px; padding-left: 22px; color: var(--ink-soft); font-size: 15.5px; }
+  li { margin-bottom: 7px; }
+  li::marker { color: var(--accent-ink); }
+  strong { color: var(--ink); font-weight: 600; }
+  a.inline { color: var(--accent-ink); }
+
+  mark.fill {
+    background: var(--fill-bg);
+    color: var(--fill-ink);
+    border-bottom: 1px dashed var(--fill-edge);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: .9em;
+    font-weight: 500;
+  }
+
+  .legend {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 0 0 34px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    box-shadow: var(--shadow);
+  }
+  .legend mark.fill { font-size: 12px; }
+
+  footer.foot {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 2px solid var(--ink);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    color: var(--ink-faint);
+    line-height: 1.8;
+  }
+  .backtop { display: inline-block; margin-top: 20px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="mast">
+    <p class="eyebrow">CarLarp</p>
+    <h1>Support</h1>
+    <div class="meta"><span>We usually reply within a couple of days</span></div>
+  </header>
+
+  <nav class="toc">
+    <a href="./">Privacy &amp; Terms</a>
+    <a href="#contact">Contact</a>
+    <a href="#faq">Common questions</a>
+  </nav>
+
+  <div class="note" id="contact">
+    <strong>Need help?</strong> Email <a class="inline" href="mailto:carlarpstudio@gmail.com">carlarpstudio@gmail.com</a>
+    and tell us what happened — the more detail, the faster we can sort it out.
+  </div>
+
+  <section class="doc" id="faq">
+    <h2 class="doc-title">Common questions</h2>
+    <p class="doc-sub">The quick answers. If yours isn't here, just email us.</p>
+
+    <h3><span class="num">·</span><span>How do I catch a car?</span></h3>
+    <p>Point your camera at a car and take the shot. CarLarp identifies the make and model and adds
+      it to your Garage. You can also import a photo of a car from your library to identify it.</p>
+
+    <h3><span class="num">·</span><span>What is CarLarp+?</span></h3>
+    <p>An optional membership that unlocks more renders and extra perks. You can play, catch, and
+      climb the leaderboard for free. Manage or cancel a subscription anytime in your Apple Account
+      settings.</p>
+
+    <h3><span class="num">·</span><span>How do I delete my account?</span></h3>
+    <p>In the app, open Settings → Account → Delete Account. This removes your profile, catches, and
+      associated data.</p>
+
+    <h3><span class="num">·</span><span>How do I report or block someone?</span></h3>
+    <p>Open the profile or a post, tap the menu, and choose Report or Block. Blocked and reported
+      content is removed from your experience right away.</p>
+
+    <h3><span class="num">·</span><span>Is my location shared?</span></h3>
+    <p>Only as an approximate area. Your position is blurred to about a city block on your device
+      before anything is saved, and the map never shows a catch more tightly than roughly 800
+      metres. Location is optional — the app works without it.</p>
+  </section>
+
+  <footer class="foot">
+    <div>CONTACT</div>
+    <div>Raymond Calubayan</div>
+    <div>PO Box 8622, Cherry Hill, NJ 08002</div>
+    <div>carlarpstudio@gmail.com</div>
+    <div style="margin-top:14px; color:var(--ink-faint)">CarLarp · Support</div>
+  </footer>
+</div>
+</body>
+</html>

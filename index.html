@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CarLarp Privacy & Terms</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper: #f7f6f2;
+    --surface: #ffffff;
+    --ink: #1a1c1e;
+    --ink-soft: #4a4f55;
+    --ink-faint: #6b7178;
+    --rule: rgba(20,22,24,.10);
+    --rule-soft: rgba(20,22,24,.06);
+    --accent: #0a9d88;
+    --accent-ink: #0a9d88;
+    --fill-bg: rgba(255, 196, 60, .22);
+    --fill-ink: #7a5300;
+    --fill-edge: rgba(180, 120, 0, .5);
+    --note-bg: rgba(10,157,136,.07);
+    --shadow: 0 1px 3px rgba(0,0,0,.05), 0 8px 30px rgba(0,0,0,.04);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0b0c0e;
+      --surface: #14161a;
+      --ink: #edeef0;
+      --ink-soft: rgba(237,238,240,.68);
+      --ink-faint: rgba(237,238,240,.45);
+      --rule: rgba(255,255,255,.09);
+      --rule-soft: rgba(255,255,255,.05);
+      --accent: #00d8b8;
+      --accent-ink: #2fe6cb;
+      --fill-bg: rgba(255, 196, 60, .14);
+      --fill-ink: #f0c66a;
+      --fill-edge: rgba(255, 196, 60, .4);
+      --note-bg: rgba(0,216,184,.08);
+      --shadow: none;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #0b0c0e;
+    --surface: #14161a;
+    --ink: #edeef0;
+    --ink-soft: rgba(237,238,240,.68);
+    --ink-faint: rgba(237,238,240,.45);
+    --rule: rgba(255,255,255,.09);
+    --rule-soft: rgba(255,255,255,.05);
+    --accent: #00d8b8;
+    --accent-ink: #2fe6cb;
+    --fill-bg: rgba(255, 196, 60, .14);
+    --fill-ink: #f0c66a;
+    --fill-edge: rgba(255, 196, 60, .4);
+    --note-bg: rgba(0,216,184,.08);
+    --shadow: none;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.65;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: clamp(28px, 5vw, 64px) clamp(20px, 5vw, 40px) 96px;
+  }
+
+  header.mast {
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 22px;
+    margin-bottom: 8px;
+  }
+  .eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-family: "Newsreader", Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(30px, 6vw, 44px);
+    line-height: 1.08;
+    letter-spacing: -.01em;
+    margin: 0 0 14px;
+    text-wrap: balance;
+  }
+  .meta {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    color: var(--ink-faint);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+  }
+
+  nav.toc {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 26px 0 34px;
+  }
+  nav.toc a {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    letter-spacing: .04em;
+    text-decoration: none;
+    color: var(--ink-soft);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 8px 14px;
+    transition: border-color .15s, color .15s;
+  }
+  nav.toc a:hover { color: var(--accent-ink); border-color: var(--accent); }
+
+  .note {
+    background: var(--note-bg);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin: 0 0 40px;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+  }
+  .note strong { color: var(--ink); }
+
+  section.doc { margin-bottom: 72px; scroll-margin-top: 24px; }
+  h2.doc-title {
+    font-family: "Newsreader", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(24px, 4.5vw, 32px);
+    letter-spacing: -.01em;
+    margin: 0 0 4px;
+    padding-top: 8px;
+  }
+  .doc-sub {
+    color: var(--ink-faint);
+    font-size: 14px;
+    margin: 0 0 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  h3 {
+    font-family: "Public Sans", sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: .01em;
+    margin: 34px 0 10px;
+    color: var(--ink);
+    display: flex;
+    gap: 12px;
+  }
+  h3 .num {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    color: var(--accent-ink);
+    padding-top: 2px;
+    min-width: 28px;
+  }
+  h3 + p, h3 + ul { margin-top: 0; }
+
+  p { margin: 0 0 14px; color: var(--ink-soft); font-size: 15.5px; }
+  .lead-in { color: var(--ink); }
+  ul { margin: 0 0 14px; padding-left: 22px; color: var(--ink-soft); font-size: 15.5px; }
+  li { margin-bottom: 7px; }
+  li::marker { color: var(--accent-ink); }
+  strong { color: var(--ink); font-weight: 600; }
+  a.inline { color: var(--accent-ink); }
+
+  mark.fill {
+    background: var(--fill-bg);
+    color: var(--fill-ink);
+    border-bottom: 1px dashed var(--fill-edge);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: .9em;
+    font-weight: 500;
+  }
+
+  .legend {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 0 0 34px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    box-shadow: var(--shadow);
+  }
+  .legend mark.fill { font-size: 12px; }
+
+  footer.foot {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 2px solid var(--ink);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    color: var(--ink-faint);
+    line-height: 1.8;
+  }
+  .backtop { display: inline-block; margin-top: 20px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="mast">
+    <p class="eyebrow">CarLarp</p>
+    <h1>Privacy Policy &amp; Terms of Use</h1>
+    <div class="meta">
+      <span>Effective 17 September 2026</span>
+      <span>Version 1.0</span>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <a href="#privacy">Privacy Policy</a>
+    <a href="#terms">Terms of Use</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="note">
+    <strong>Please review before relying on this.</strong> These documents describe how CarLarp
+    actually handles data and what using it involves, but they are a starting point, not legal
+    advice. Have them reviewed — particularly the liability, disclaimer, and governing-law
+    sections — before you publish or submit.
+  </div>
+
+  <!-- ========================= PRIVACY ========================= -->
+  <section class="doc" id="privacy">
+    <h2 class="doc-title">Privacy Policy</h2>
+    <p class="doc-sub">How CarLarp collects, uses, and protects your information.</p>
+
+    <h3><span class="num">1</span><span>Who we are</span></h3>
+    <p class="lead-in">CarLarp (“the app,” “we,” “us”) is a car-spotting game operated by
+      Raymond Calubayan. This policy explains what information the
+      app handles when you use it. If you do not agree with it, please do not use CarLarp.</p>
+
+    <h3><span class="num">2</span><span>Information we collect</span></h3>
+    <ul>
+      <li><strong>Account information.</strong> You can use CarLarp as a guest with no account. If
+        you choose to sign in, we use <strong>Sign in with Apple</strong>, which gives us an
+        anonymised Apple user identifier and, if you allow it, a name and a relay email address.
+        Guest sessions are identified only by an anonymous identifier created on your device.</li>
+      <li><strong>Photos you capture or import.</strong> When you catch a car, the photo you take
+        (or a photo you choose from your library to identify) is processed for recognition and, if
+        the catch is saved, stored with your account.</li>
+      <li><strong>Approximate location.</strong> If you grant location access, we record where a
+        catch happened <strong>only as a deliberately blurred coordinate</strong>. Your position is
+        snapped to an area of roughly a city block on your device before anything leaves the phone,
+        and is never drawn on the map tighter than about 800 metres. We do not collect or store your
+        precise location.</li>
+      <li><strong>Gameplay data.</strong> The cars you catch, your score, level, quests, and who you
+        follow.</li>
+      <li><strong>Profile information.</strong> A username, an optional avatar photo, and an optional
+        home city, if you set them.</li>
+      <li><strong>Purchases.</strong> Purchases are processed by Apple. We receive confirmation that
+        a purchase occurred and what it was for; we never receive your card or payment details.</li>
+      <li><strong>Diagnostic data.</strong> Limited technical logs used to keep the app working. We
+        do not use third-party advertising or tracking SDKs, and we do not track you across other
+        apps or websites.</li>
+    </ul>
+
+    <h3><span class="num">3</span><span>How we use your information</span></h3>
+    <ul>
+      <li>To identify the cars you photograph and score your catches.</li>
+      <li>To run the game: your Garage, collection, levels, quests, and leaderboard rank.</li>
+      <li>To show catches on the Radar as an approximate heat map.</li>
+      <li>To operate social features you choose to use — the feed, following, and profiles.</li>
+      <li>To process purchases and provide membership benefits.</li>
+      <li>To keep the app secure, prevent abuse, and fix problems.</li>
+    </ul>
+
+    <h3><span class="num">4</span><span>Car recognition and service providers</span></h3>
+    <p>Identifying a car uses a combination of on-device processing and a cloud service. When cloud
+      recognition is used, <strong>the car photo is sent to a third-party AI provider (Google) for
+      the sole purpose of identifying the vehicle</strong>. We rely on the following providers, who
+      process data on our behalf:</p>
+    <ul>
+      <li><strong>Supabase</strong> — hosting, database, authentication, and photo storage.</li>
+      <li><strong>Google (Gemini API)</strong> — cloud car identification from your photo.</li>
+      <li><strong>Apple</strong> — Sign in with Apple, in-app purchases, and iCloud/CloudKit storage
+        of your own catch photos in your private iCloud account.</li>
+    </ul>
+    <p>We do not sell your personal information.</p>
+
+    <h3><span class="num">5</span><span>What other players can see</span></h3>
+    <p>CarLarp is social by design, but you control your exposure:</p>
+    <ul>
+      <li>If your profile is <strong>public</strong>, your username, avatar, and catches can appear
+        on the leaderboard, the feed, and the Radar. A catch’s photo is shown to others only where
+        your username already is, and only when you have chosen to share that catch’s photo.</li>
+      <li>If your profile is <strong>private</strong>, your catches stay off other players’ Radar and
+        your profile is not shown to others, regardless of other settings.</li>
+      <li>You can <strong>report</strong> or <strong>block</strong> other users, and hide content, at
+        any time. Reported and blocked content is removed from your experience, and every social
+        view filters blocked, hidden, and reported content.</li>
+    </ul>
+
+    <h3><span class="num">6</span><span>Location, in detail</span></h3>
+    <p>Location is optional and used only to place catches on the Radar. The exact coordinate is
+      never transmitted or stored: it is blurred on your device to about a city-block-sized area
+      before it is saved, and the map never renders a catch more tightly than roughly 800 metres.
+      You can turn location off in your device settings at any time; the app still works without it.</p>
+
+    <h3><span class="num">7</span><span>Data retention and deletion</span></h3>
+    <p>We keep your information for as long as your account exists. You can <strong>delete your
+      account</strong> at any time from within the app (Settings → Account), which removes your
+      profile, catches, and associated data from our systems. Some records may be retained where
+      required by law or for legitimate security purposes.</p>
+
+    <h3><span class="num">8</span><span>Security</span></h3>
+    <p>Data is transmitted over encrypted connections and stored with access controls that limit each
+      account to its own data. No method of storage or transmission is completely secure, but we take
+      reasonable measures to protect your information.</p>
+
+    <h3><span class="num">9</span><span>Children</span></h3>
+    <p>CarLarp is not directed to children under 13,
+      and we do not knowingly collect personal information from them. If you believe a child has
+      provided us information, contact us and we will remove it.</p>
+
+    <h3><span class="num">10</span><span>Your rights</span></h3>
+    <p>Depending on where you live, you may have the right to access, correct, or delete your personal
+      information, or to object to certain processing. You can exercise most of these directly in the
+      app, or by contacting us at the address below. If you are in the EU/EEA or UK, our lawful bases
+      for processing are performing our contract with you (running the game), your consent (location),
+      and our legitimate interests (security and abuse prevention).</p>
+
+    <h3><span class="num">11</span><span>Changes to this policy</span></h3>
+    <p>We may update this policy from time to time. Material changes will be reflected by a new
+      effective date at the top, and where appropriate we will notify you in the app.</p>
+
+    <p><a class="inline backtop" href="#privacy">↑ Back to top</a></p>
+  </section>
+
+  <!-- ========================= TERMS ========================= -->
+  <section class="doc" id="terms">
+    <h2 class="doc-title">Terms of Use</h2>
+    <p class="doc-sub">The agreement between you and CarLarp when you use the app.</p>
+
+    <h3><span class="num">1</span><span>Acceptance</span></h3>
+    <p class="lead-in">By downloading or using CarLarp, you agree to these Terms. If you do not agree,
+      do not use the app. These Terms are between you and Raymond Calubayan; Apple is not a party to them.</p>
+
+    <h3><span class="num">2</span><span>Eligibility</span></h3>
+    <p>You must be at least 13 years old, or the
+      minimum age of digital consent where you live, to use CarLarp.</p>
+
+    <h3><span class="num">3</span><span>Your account</span></h3>
+    <p>You are responsible for activity under your account. Sign in with Apple secures your account
+      through Apple; keep your Apple Account secure. You may use the app as a guest, with limited
+      features, without an account.</p>
+
+    <h3><span class="num">4</span><span>Acceptable use</span></h3>
+    <p>You agree not to:</p>
+    <ul>
+      <li>Upload content that is unlawful, infringing, harassing, hateful, or that depicts other
+        people without a lawful basis;</li>
+      <li>Photograph or upload images in a way that invades others’ privacy, or capture identifiable
+        people, faces, or license plates where you have no right to do so;</li>
+      <li>Cheat, automate, script, or otherwise falsify catches, location, or scores;</li>
+      <li>Reverse engineer, interfere with, or attempt to gain unauthorised access to the app or its
+        systems;</li>
+      <li>Use the app while operating a vehicle, or in any unsafe or unlawful manner.</li>
+    </ul>
+
+    <h3><span class="num">5</span><span>Your content</span></h3>
+    <p>You keep ownership of the photos you upload. You grant us a non-exclusive, worldwide,
+      royalty-free licence to host, store, display, and process that content <strong>only to operate
+      the app</strong> — for example, to identify a car, generate render art, and show your catch on
+      surfaces you choose to make public. You are responsible for the content you upload and confirm
+      you have the right to upload it. We may remove content that violates these Terms.</p>
+
+    <h3><span class="num">6</span><span>Purchases and subscriptions</span></h3>
+    <ul>
+      <li><strong>CarLarp+</strong> is an auto-renewable subscription, offered monthly and yearly. It
+        unlocks additional renders and membership perks.</li>
+      <li>Render credit packs are one-time consumable purchases.</li>
+      <li>All purchases are processed by Apple and charged to your Apple Account. Subscriptions renew
+        automatically unless cancelled at least 24 hours before the end of the current period. Manage
+        or cancel anytime in your Apple Account settings.</li>
+      <li>Except where required by law or Apple’s policies, purchases are non-refundable. Refunds are
+        handled by Apple.</li>
+      <li>Virtual items such as renders and credits have no monetary value, cannot be exchanged for
+        cash, and may be forfeited if your account is closed for a violation of these Terms.</li>
+    </ul>
+
+    <h3><span class="num">7</span><span>Recognition is not guaranteed</span></h3>
+    <p>Car identification is automated and may be inaccurate or incomplete. Scores, tiers, and render
+      art are provided for entertainment and are not statements of fact about any vehicle.</p>
+
+    <h3><span class="num">8</span><span>Intellectual property</span></h3>
+    <p>The app, its design, and its content (other than your uploaded content) are owned by
+      Raymond Calubayan and protected by law. Vehicle names and marks
+      belong to their respective owners and are used for identification only; CarLarp is not
+      affiliated with, endorsed by, or sponsored by any vehicle manufacturer.</p>
+
+    <h3><span class="num">9</span><span>Disclaimers</span></h3>
+    <p>CarLarp is provided “as is” and “as available,” without warranties of any kind, whether
+      express or implied, to the fullest extent permitted by law. We do not warrant that the app will
+      be uninterrupted, error-free, or accurate.</p>
+
+    <h3><span class="num">10</span><span>Limitation of liability</span></h3>
+    <p>To the fullest extent permitted by law, Raymond Calubayan will
+      not be liable for any indirect, incidental, special, consequential, or punitive damages, or any
+      loss of data or profits, arising from your use of the app. Nothing in these Terms limits
+      liability that cannot be limited under applicable law.</p>
+
+    <h3><span class="num">11</span><span>Termination</span></h3>
+    <p>You may stop using CarLarp and delete your account at any time. We may suspend or terminate
+      access if you violate these Terms or use the app in a way that harms other users or our
+      systems.</p>
+
+    <h3><span class="num">12</span><span>Apple</span></h3>
+    <p>These Terms are between you and us, not Apple. Apple has no obligation to provide support or
+      maintenance for the app. Apple is not responsible for any product claims, legal claims, or
+      third-party intellectual-property claims relating to the app. Apple and its subsidiaries are
+      third-party beneficiaries of these Terms and may enforce them against you. You confirm you are
+      not located in a country subject to a U.S. Government embargo and are not on any U.S.
+      prohibited-parties list.</p>
+
+    <h3><span class="num">13</span><span>Governing law</span></h3>
+    <p>These Terms are governed by the laws of the State of New Jersey, USA,
+      without regard to its conflict-of-laws rules, except where local consumer-protection law grants
+      you stronger rights.</p>
+
+    <h3><span class="num">14</span><span>Changes</span></h3>
+    <p>We may update these Terms from time to time. Continued use of the app after a change means you
+      accept the updated Terms.</p>
+
+    <p><a class="inline backtop" href="#terms">↑ Back to top</a></p>
+  </section>
+
+  <footer class="foot" id="contact">
+    <div>CONTACT</div>
+    <div>Raymond Calubayan</div>
+    <div>PO Box 8622, Cherry Hill, NJ 08002</div>
+    <div>carlarpstudio@gmail.com</div>
+    <div style="margin-top:14px; color:var(--ink-faint)">CarLarp · Privacy Policy &amp; Terms of Use · Effective 17 September 2026</div>
+  </footer>
+</div>
+</body>
+</html>
